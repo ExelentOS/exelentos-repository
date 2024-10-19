@@ -1,0 +1,20 @@
+pkgname=exelentos-sddm
+pkgver=1.0
+pkgrel=1
+pkgdesc="sddm configuration for the exelentos project"
+url="https://github.com/ExelentOS/exelentos-repository"
+arch=('any')
+license=('LGPL')
+provides=($pkgname)
+conflicts=($pkgname)
+
+prepare() {
+    cp -af ../files/. "${srcdir}"
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/share/sddm" "$pkgdir/etc"
+    rsync -av "${srcdir}/sddm" "$pkgdir/usr/share/sddm"
+    install "${srcdir}/sddm.conf" "$pkgdir/etc/sddm.conf"
+}
+
