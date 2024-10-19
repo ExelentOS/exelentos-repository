@@ -13,7 +13,8 @@ prepare() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/pixmaps"
+    mkdir -p "$pkgdir/usr/share/pixmaps" "$pkgdir/usr/share/plasma/"
     rsync -av "${srcdir}/pixmaps/" "$pkgdir/usr/share/pixmaps/"
+    rsync -av "${srcdir}/plasma" "$pkgdir/usr/share/plasma"
 }
 
