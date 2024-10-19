@@ -14,7 +14,7 @@ prepare() {
 
 package() {
     mkdir -p "$pkgdir/usr/share/sddm" "$pkgdir/etc"
-    rsync -av "${srcdir}/sddm" "$pkgdir/usr/share/sddm"
+    rsync -av "${srcdir}/sddm" "$pkgdir/usr/share/"
     install "${srcdir}/sddm.conf" "$pkgdir/etc/sddm.conf"
 }
 
