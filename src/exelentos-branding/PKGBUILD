@@ -1,0 +1,22 @@
+pkgname=exelentos-branding
+pkgver=1.0
+pkgrel=1
+pkgdesc="branding package for the exelentos project"
+url="https://github.com/ExelentOS/exelentos-repository"
+arch=('any')
+license=('LGPL')
+provides=($pkgname)
+conflicts=($pkgname)
+
+prepare() {
+    cp -af ../files/. "${srcdir}"
+}
+
+package() {
+    # Ensure the destination directory exists before copying
+    mkdir -p "$pkgdir/usr/share/pixmaps"
+    
+    # Copy all files recursively from the pixmaps directory
+    rsync -av "${srcdir}/pixmaps/" "$pkgdir/usr/share/pixmaps/"
+}
+
