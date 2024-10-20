@@ -1,4 +1,4 @@
-pkgname="ExelentOS-hooks"
+pkgname="exelentos-hooks"
 pkgver=1.0
 pkgrel=1
 pkgdesc='Pacman hooks for Exelent idk how this works'
