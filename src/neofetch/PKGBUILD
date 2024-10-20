@@ -1,0 +1,20 @@
+pkgname=neofetch
+pkgver=1.0
+pkgrel=1
+pkgdesc="edited verison of neofetch"
+url="https://github.com/ExelentOS/exelentos-repository"
+arch=('any')
+license=('LGPL')
+provides=($pkgname)
+conflicts=($pkgname)
+
+prepare() {
+    cp -af ../files/neofetch "${srcdir}"
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/bin" 
+    install -m 755 "${srcdir}/neofetch" "$pkgdir/usr/bin/neofetch"
+ 
+}
+
