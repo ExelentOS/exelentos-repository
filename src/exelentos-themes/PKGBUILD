@@ -1,0 +1,19 @@
+pkgname=exelentos-themes
+pkgver=1.0
+pkgrel=1
+pkgdesc="themes for exelentos"
+url="https://github.com/ExelentOS/exelentos-repository"
+arch=('any')
+license=('LGPL')
+provides=($pkgname)
+conflicts=($pkgname)
+
+prepare() {
+    cp -af ../files/. "${srcdir}"
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/share/" 
+    rsync -av "${srcdir}/plasma" "$pkgdir/usr/share/"
+}
+
