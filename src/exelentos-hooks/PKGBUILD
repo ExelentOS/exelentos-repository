@@ -1,0 +1,29 @@
+pkgname="ExelentOS-hooks"
+pkgver=1.0
+pkgrel=1
+pkgdesc='Pacman hooks for Exelent idk how this works'
+url="https://github.com/ExelentOS/exelentos-repository"
+arch=('any')
+license=('GPL3')
+
+source=(
+  'exelent-hooks-runner'
+  'exelent-lsb-release.hook'
+  'exelent-os-release.hook'
+)
+
+sha512sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
+
+package() {
+
+  local hooks=${pkgdir}/usr/share/libalpm/hooks
+  local bin=${pkgdir}/usr/bin
+
+  install -Dm644 exelent-lsb-release.hook      	"$hooks"/exelent-lsb-release.hook
+  install -Dm644 exelent-os-release.hook       	"$hooks"/exelent-os-release.hook
+  install -Dm755 exelent-hooks-runner        	"$bin"/exelent-hooks-runner
+ }
