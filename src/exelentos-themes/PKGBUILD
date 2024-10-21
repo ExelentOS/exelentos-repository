@@ -14,8 +14,6 @@ prepare() {
 
 package() {
     mkdir -p "$pkgdir/usr/share/" 
-    rsync -av "${srcdir}/plasma" "$pkgdir/usr/share/"
-    rsync -av "${srcdir}/color-schemes" "$pkgdir/usr/share/"
-    rsync -av "${srcdir}/aurorae" "$pkgdir/usr/share/"
+    rsync -av "${srcdir}/." "$pkgdir/usr/share/"
 }
 
