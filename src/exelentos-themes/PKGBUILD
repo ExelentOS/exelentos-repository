@@ -13,7 +13,9 @@ prepare() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/" 
+    mkdir -p "$pkgdir/usr/share/" "$pkgdir/usr/lib/qt/styles"
     rsync -av "${srcdir}/plasma" "$pkgdir/usr/share/"
+    rsync -av "${srcdir}/color-schemes" "$pkgdir/usr/share/"
+    install -m 755 "${srcdir}/qt/plugins/styles/libchameleon.so" "$pkgdir/usr/lib/qt/styles/libchameleon.so"
 }
 
