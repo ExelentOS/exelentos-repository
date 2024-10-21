@@ -1,0 +1,17 @@
+pkgname=exelentos-skeleton
+pkgver=1.0
+pkgrel=1
+pkgdesc="skeleton for users in exelentos"
+url=""
+arch=('any')
+license=('LGPL')
+provides=($pkgname)
+conflicts=($pkgname)
+
+prepare() {
+    cp -af ../files/. "${srcdir}"
+}
+
+package() {
+}
+
