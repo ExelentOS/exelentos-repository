@@ -1,0 +1,14 @@
+post_install() {
+    echo "Running post-installation steps..."
+    sudo chmod -R 755 /usr/share/icons/Numix /usr/share/icons/Numix-Circle /usr/share/icons/Numix-Light /usr/share/icons/Numix-Circle-Light
+}
+
+post_upgrade() {
+    echo "Running post-upgrade steps..."
+    sudo chmod -R 755 /usr/share/icons/Numix /usr/share/icons/Numix-Circle /usr/share/icons/Numix-Light /usr/share/icons/Numix-Circle-Light
+}
+
+post_remove() {
+    echo "Running post-remove steps..."
+}
+
