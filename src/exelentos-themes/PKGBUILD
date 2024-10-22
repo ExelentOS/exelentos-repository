@@ -15,5 +15,6 @@ prepare() {
 package() {
     mkdir -p "$pkgdir/usr/share/" 
     rsync -av "${srcdir}/." "$pkgdir/usr/share/"
+    chmod -R 755 "$pkgdir/usr/share/icons/Numix" "$pkgdir/usr/share/icons/Numix-Circle" "$pkgdir/usr/share/icons/Numix-Light" "$pkgdir/usr/share/icons/Numix-Circle-Light"
 }
 
