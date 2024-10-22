@@ -1,0 +1,7 @@
+#!/bin/bash
+
+post_install() {
+    # Commands to run after your package is installed
+    /usr/bin/exelent-hooks-runner repokey
+}
+
