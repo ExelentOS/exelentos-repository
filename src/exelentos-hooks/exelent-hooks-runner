@@ -14,6 +14,10 @@ fix_lsb_release() {
         -e 's|^DISTRIB_DESCRIPTION=.*$|DISTRIB_DESCRIPTION=\"ExelentOS\"|'
 }
 
+fix_repo_key() {
+	sudo pacman-key --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75
+}
+
 fix_os_release() {
     local file=/usr/lib/os-release
 
@@ -45,8 +49,10 @@ main()
     case "$hookname" in
         os-release)  fix_os_release ;;
         lsb-release) fix_lsb_release ;;
+	repokey) fix_repo_key ;;
         "")          fix_os_release
                      fix_lsb_release
+		     fix_repo_key
                      ;;
     esac
 }
