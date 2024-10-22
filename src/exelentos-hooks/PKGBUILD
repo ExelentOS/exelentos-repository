@@ -10,9 +10,11 @@ source=(
   'exelent-hooks-runner'
   'exelent-lsb-release.hook'
   'exelent-os-release.hook'
+  'exelent-repo-keys.hook'
 )
 
 sha512sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -25,5 +27,6 @@ package() {
 
   install -Dm644 exelent-lsb-release.hook      	"$hooks"/exelent-lsb-release.hook
   install -Dm644 exelent-os-release.hook       	"$hooks"/exelent-os-release.hook
+  install -Dm644 exelent-repo-keys.hook       	"$hooks"/exelent-repo-keys.hook
   install -Dm755 exelent-hooks-runner        	"$bin"/exelent-hooks-runner
  }
