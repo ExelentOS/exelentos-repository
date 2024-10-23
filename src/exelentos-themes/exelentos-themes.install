@@ -1,13 +1,11 @@
 post_install() {
     echo "Running post-installation steps..."
     sudo chmod -R 755 /usr/share/icons/Numix /usr/share/icons/Numix-Circle /usr/share/icons/Numix-Light /usr/share/icons/Numix-Circle-Light
-    sudo /usr/bin/exelent-hooks-runner repokey
 }
 
 post_upgrade() {
     echo "Running post-upgrade steps..."
     sudo chmod -R 755 /usr/share/icons/Numix /usr/share/icons/Numix-Circle /usr/share/icons/Numix-Light /usr/share/icons/Numix-Circle-Light
-    sudo /usr/bin/exelent-hooks-runner repokey
 }
 
 post_remove() {
