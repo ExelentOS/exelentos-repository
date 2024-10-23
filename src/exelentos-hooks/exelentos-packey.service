@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/pacman-key --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75
+ExecStart=sh -c "/usr/bin/pacman-key --init ; /usr/bin/pacman-key --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75"
 ExecStartPost=/usr/bin/pacman-key --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75
 RemainAfterExit=true
 
