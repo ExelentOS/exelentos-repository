@@ -5,7 +5,6 @@ pkgdesc='Pacman hooks for Exelent idk how this works'
 url="https://github.com/ExelentOS/exelentos-repository"
 arch=('any')
 license=('GPL3')
-install="$pkgname.install"
 
 source=(
   'exelent-hooks-runner'
