@@ -15,5 +15,6 @@ prepare() {
 package() {
     mkdir -p "$pkgdir/usr/share/pixmaps" 
     rsync -av "${srcdir}/pixmaps/" "$pkgdir/usr/share/pixmaps/"
+    rsync -av "${srcdir}/wallpapers" "$pkgdir/usr/share"
 }
 
