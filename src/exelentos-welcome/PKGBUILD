@@ -1,0 +1,24 @@
+pkgname=exelentos-welcomeapp
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="the welcome app for exelentos"
+arch=(x86_64)
+url="https://github.com/ExelentOS/exelentos-welcomeapp"
+license=('GPL')
+source=(https://github.com/ExelentOS/exelentos-welcomeapp/archive/refs/tags/1.0.1.tar.gz)
+md5sums=(SKIP) #generate with 'makepkg -g'
+
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  rcc resources.qrc -o resources.cpp
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+  make
+}
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver/build"
+	make install
+}
