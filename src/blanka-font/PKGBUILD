@@ -1,0 +1,19 @@
+pkgname=blanka-font
+pkgver=1.0
+pkgrel=1
+pkgdesc="Blanka fonts for ExelentOS project"
+url="https://github.com/ExelentOS/exelentos-repository"
+arch=('any')
+license=('LGPL')
+provides=($pkgname)
+conflicts=($pkgname)
+
+prepare() {
+    cp -af ../files/. "${srcdir}"
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/share/" 
+    rsync -av "${srcdir}/fonts" "$pkgdir/usr/share/"
+}
+
