@@ -13,5 +13,6 @@ prepare() {
 }
 
 package() {
+    rsync -av "${srcdir}/skel" "$pkgdir/etc"
 }
 
