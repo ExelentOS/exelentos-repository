@@ -1,0 +1,19 @@
+{
+  "KPackageStructure": "Plasma/LookAndFeel",
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "thayeeboi890@gmail.com",
+        "Name": "Y3E"
+      }
+    ],
+    "Category": "",
+    "Description": "A simple splash screen for exelentos",
+    "Id": "exelentsimple",
+    "License": "GPLv3",
+    "Name": "exelent-simple"
+  },
+  "Keywords": "Desktop;Workspace;Appearance;Look and Feel;Logout;Lock;Suspend;Shutdown;Hibernate;",
+  "X-Plasma-APIVersion": "2",
+  "X-Plasma-MainScript": "default"
+}

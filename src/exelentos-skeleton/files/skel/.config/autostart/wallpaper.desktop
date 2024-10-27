@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/bash -c "/usr/bin/plasma-apply-wallpaperimage /usr/share/wallpapers/reborn.png ; /usr/bin/rm ~/.config/autostart/wallpaper.desktop"
+X-GNOME-Autostart-enabled=true
+Name=Set Wallpaper
+
