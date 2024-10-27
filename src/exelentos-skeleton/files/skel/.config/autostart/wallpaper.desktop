@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/bash -c "/usr/bin/plasma-apply-wallpaperimage /usr/share/wallpapers/reborn.png ; /usr/bin/rm ~/.config/autostart/wallpaper.desktop"
+Exec=/usr/bin/bash -c '/usr/bin/plasma-apply-wallpaperimage /usr/share/wallpapers/reborn.png ; /usr/bin/echo "[Containments][2][Applets][3][Configuration][General]\nfavoritesPortedToKAstats=true\nicon=1CD8_rundll32.0\nsystemFavorites=suspend\\,hibernate\\,reboot\\,shutdown" >> ~/.config/plasma-org.kde.plasma.desktop-appletsrc ; /usr/bin/rm ~/.config/autostart/wallpaper.desktop'
 X-GNOME-Autostart-enabled=true
 Name=Set Wallpaper
 
