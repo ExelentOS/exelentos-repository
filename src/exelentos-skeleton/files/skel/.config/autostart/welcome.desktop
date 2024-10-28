@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/bash -c "/usr/bin/appexelentos-welcome iso ; /usr/bin/rm ~/.config/autostart/welcome.desktop"
+X-GNOME-Autostart-enabled=true
+Name=Set Wallpaper
+
