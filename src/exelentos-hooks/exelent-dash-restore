@@ -1,0 +1,2 @@
+bash -c 'echo "[Containments][2][Applets][5][Configuration][General]" ; echo "launchers=preferred://browser,applications:org.mozilla.Thunderbird.desktop,applications:org.kde.discover.desktop,file:///usr/share/applications/libreoffice-startcenter.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop"' >> ~/.config/plasma-org.kde.plasma.desktop-appletsrc
+
