@@ -15,7 +15,8 @@ fix_lsb_release() {
 }
 
 fix_repo_key() {
-	sudo pacman-key --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75
+	sudo pacman-key --add /usr/share/exelent.gpg
+	sudo pacman-key --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75
 }
 
 fix_os_release() {
