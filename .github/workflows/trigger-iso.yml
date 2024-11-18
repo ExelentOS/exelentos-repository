@@ -1,10 +1,11 @@
 name: Trigger Repo deploy Workflow
 
 on:
+  # Triggers the workflow on push or pull request events but only for the "andromeda-reborn" branch e
   push:
-    branches:
-      - main  # Or the branch you want to trigger from
-
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ] # Allow manual triggering
 jobs:
   trigger:
     runs-on: ubuntu-latest
