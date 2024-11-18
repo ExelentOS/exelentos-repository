@@ -1,0 +1,50 @@
+name: run on welcomeapp trigger
+
+on:
+  repository_dispatch:
+    types: [welcome-update]  # Define your custom event name here
+
+jobs:
+  update-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Make changes to the repository (example: create a new file or modify an existing one)
+    - name: Modify repository contents
+      run: |
+        # Example of editing a file (this could be any script/command you want)
+        REPO_RELEASE=$(curl -s https://api.github.com/repos/exelentos/exelentos-welcomeapp/releases/latest | jq -r '.tag_name')
+        cd src/exelentos-welcome
+        REPO_CURRENT=$(grep '^pkgver=' PKGBUILD | cut -d= -f2)
+        sed -i "s/$REPO_CURRENT/REPO_RELEASE/g" PKGBUILD
+
+    - name: Make package
+      run: |
+          docker run --rm --privileged -v $PWD:/workspace -w /workspace archlinux:latest /bin/bash -c "
+          pacman -Syu --noconfirm && \
+          pacman -S --noconfirm sudo && \
+          cd /workspace && \
+          sudo pacman-key --init && \
+          sudo pacman-key --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          sudo pacman-key --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          sudo bash -c \"echo 'GPGKEY="AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75"' > /etc/makepkg.conf \"
+          cd src/exelentos-welcome/
+          makepkg -cf
+          REPO_RELEASE=$(curl -s https://api.github.com/repos/exelentos/exelentos-welcomeapp/releases/latest | jq -r '.tag_name')
+          gpg --batch --yes --pinentry-mode loopback --passphrase "${{ secrets.GPG_PASS }}" --detach-sign --armor --output exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst.sig exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst
+          mv *zst* ../../x86_64
+          cd ../../x86_64
+          repo-add --verify --sign exelentos.db.tar.gz *.pkg.tar.zst
+          "
+
+    # Stage, commit, and push the changes
+    - name: Commit and push changes
+      run: |
+        git add *
+        git commit -m "Automatically configure welcomeapp"
+        git push https://NEOLabs-software:${{ secrets.GH_TOKEN }}@github.com/exelentos/exelentos-repository.git
+
