@@ -41,7 +41,7 @@ jobs:
           pwd && ls && \
           makepkg -cf && \
           REPO_RELEASE=$(curl -s https://api.github.com/repos/exelentos/exelentos-welcomeapp/releases/latest | jq -r '.tag_name') && \
-          gpg --batch --yes --pinentry-mode loopback --passphrase "${{ secrets.GPG_PASS }}" --default-key "AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75" --detach-sign --armor --output exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst.sig exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst && \
+          gpg --batch --yes --pinentry-mode loopback --passphrase "${{ secrets.GPG_PASS }}" --default-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 --detach-sign --armor --output exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst.sig exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst && \
           mv *zst* ../../x86_64 && \
           cd ../../x86_64 && \
           repo-add --verify --sign exelentos.db.tar.gz *.pkg.tar.zst\"
