@@ -11,7 +11,6 @@ md5sums=(SKIP) #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  rcc resources.qrc -o resources.cpp
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
