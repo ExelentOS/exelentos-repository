@@ -26,7 +26,7 @@ jobs:
       run: |
           docker run --rm --privileged -v $PWD:/workspace -w /workspace archlinux:latest /bin/bash -c "
           pacman -Syu --noconfirm && \
-          pacman -S --noconfirm sudo qt6-base debugedit fakeroot gcc binutils qt5-base cmake make && \
+          pacman -S --noconfirm sudo qt6-base debugedit fakeroot gcc binutils qt5-base cmake make qt6-declarative && \
           cd /workspace && \
           sudo pacman-key --init && \
           gpg --no-tty --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
