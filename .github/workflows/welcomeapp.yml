@@ -16,11 +16,11 @@ jobs:
     # Make changes to the repository (example: create a new file or modify an existing one)
     - name: Modify repository contents
       run: |
-        # Example of editing a file (this could be any script/command you want)
+        
         REPO_RELEASE=$(curl -s https://api.github.com/repos/exelentos/exelentos-welcomeapp/releases/latest | jq -r '.tag_name')
         cd src/exelentos-welcome
         REPO_CURRENT=$(grep '^pkgver=' PKGBUILD | cut -d= -f2)
-        sed -i "s/$REPO_CURRENT/REPO_RELEASE/g" PKGBUILD
+        sed -i "s/$REPO_CURRENT/$REPO_RELEASE/g" PKGBUILD
 
     - name: Make package
       run: |
@@ -29,9 +29,8 @@ jobs:
           pacman -S --noconfirm sudo && \
           cd /workspace && \
           sudo pacman-key --init && \
-          sudo pacman-key --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
-          sudo pacman-key --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
-          sudo bash -c \"echo 'GPGKEY="AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75"' > /etc/makepkg.conf \"
+          gpg --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          gpg --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
           cd src/exelentos-welcome/
           cat PKGBUILD
           makepkg -cf
