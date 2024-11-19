@@ -21,7 +21,6 @@ jobs:
         cd src/exelentos-welcome
         REPO_CURRENT=$(grep '^pkgver=' PKGBUILD | cut -d= -f2)
         sed -i "s/$REPO_CURRENT/$REPO_RELEASE/g" PKGBUILD
-
     - name: Make package
       run: |
           docker run --rm --privileged -v $PWD:/workspace -w /workspace archlinux:latest /bin/bash -c "
@@ -29,28 +28,28 @@ jobs:
           pacman -S --noconfirm sudo qt6-base debugedit fakeroot gcc binutils qt5-base cmake make qt6-declarative && \
           cd /workspace && \
           sudo pacman-key --init && \
-          cd src/exelentos-welcome/ && \
-          cat PKGBUILD && \
-          useradd -m user && \
-          sudo chmod a+w /workspace && \
-          chown -R user * && \
+          gpg --no-tty --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          gpg --no-tty --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          cd src/exelentos-welcome/
+          cat PKGBUILD
+          useradd -m user
+          sudo chmod a+w /workspace
+          chown -R user *
           sudo -u user bash -c \"\
           cd /workspace/src/exelentos-welcome/
           pwd && ls && \
           makepkg -cf && \
-          gpg --no-tty --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
-          gpg --no-tty --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
           REPO_RELEASE=$(curl -s https://api.github.com/repos/exelentos/exelentos-welcomeapp/releases/latest | jq -r '.tag_name') && \
           gpg --batch --yes --pinentry-mode loopback --passphrase "${{ secrets.GPG_PASS }}" --default-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 --detach-sign --armor --output exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst.sig exelentos-welcomeapp-'$REPO_RELEASE'-1-x86_64.pkg.tar.zst && \
+          gpg --no-tty --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          gpg --no-tty --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
           mv *zst* ../../x86_64 && \
           cd ../../x86_64 && \
           repo-add --verify --sign exelentos.db.tar.gz *.pkg.tar.zst\"
           "
-
     # Stage, commit, and push the changes
     - name: Commit and push changes
       run: |
         git add *
         git commit -m "Automatically configure welcomeapp"
         git push https://NEOLabs-software:${{ secrets.GH_TOKEN }}@github.com/exelentos/exelentos-repository.git
-
