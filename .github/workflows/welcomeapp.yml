@@ -29,11 +29,12 @@ jobs:
           pacman -S --noconfirm sudo && \
           cd /workspace && \
           sudo pacman-key --init && \
-          gpg --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
-          gpg --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          gpg --no-tty --recv-keys AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
+          gpg --no-tty --lsign-key AF9C6FE4FEFB98349614C054FEB6CA0157FE8A75 && \
           cd src/exelentos-welcome/
           cat PKGBUILD
           useradd -m user
+          sudo chmod a+w /workspace
           chown -R user *
           sudo -u user bash -c \"\
           makepkg -cf && \
