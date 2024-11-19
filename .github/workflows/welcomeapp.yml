@@ -37,6 +37,7 @@ jobs:
           sudo chmod a+w /workspace
           chown -R user *
           sudo -u user bash -c \"\
+          cd /workspace/src/exelentos-welcome/
           pwd && ls && \
           makepkg -cf && \
           REPO_RELEASE=$(curl -s https://api.github.com/repos/exelentos/exelentos-welcomeapp/releases/latest | jq -r '.tag_name') && \
