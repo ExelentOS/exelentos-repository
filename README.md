@@ -38,6 +38,8 @@ To use the packages from this repository:
     ```
     sudo pacman -S <package-name>
 
+---
+
 ## Contributing
 
 Contributions are welcome! Here's how you can help:
@@ -47,6 +49,8 @@ Contributions are welcome! Here's how you can help:
 3. Submit a pull request with a clear description of your changes.
 
 Check Contributing.md for more details.
+
+---
 
 ## Acknowledgments
 
@@ -59,6 +63,8 @@ This repository is part of a broader ecosystem, including:
 - ExelentOS ISO Repository
 - ExelentOS Installer
 - ExelentOS Welcome App
+
+---
 
 ## Final note 
 
