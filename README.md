@@ -70,3 +70,5 @@ This repository is part of a broader ecosystem, including:
 ## Final note 
 
 **We look forward to seeing how the community enhances and expands ExelentOS!**
+
+![bg](https://github.com/user-attachments/assets/7aaa0fd0-d0ea-4e77-8667-c1f0ccac2a36)
