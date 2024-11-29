@@ -32,10 +32,10 @@ To use the packages from this repository:
    SigLevel = Optional TrustAll
    Server = https://exelentos.github.io/$repo/os/$arch
 2. Synchronize the package database:
-    ```ini
+    ```
     sudo pacman -Sy
 3. Install packages from the ExelentOS repository using ```pacman```
-    ```ini 
+    ```
     sudo pacman -S <package-name>
 
 ## Contributing
