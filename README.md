@@ -1,5 +1,7 @@
 # ExelentOS Repository
 
+[![Maintenance](https://img.shields.io/maintenance/yes/2024.svg)]()
+
 Welcome to the **ExelentOS** GitHub repository! This project is part of **ExelentOS**, an Arch Linux-based distribution designed to provide a user-friendly experience for newcomers and experienced users alike. The repository primarily hosts the **x86_64 repository** for the distribution.
 
 ---
@@ -37,7 +39,6 @@ To use the packages from this repository:
 3. Install packages from the ExelentOS repository using ```pacman```
     ```
     sudo pacman -S <package-name>
-
 ---
 
 ## Contributing
