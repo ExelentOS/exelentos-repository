@@ -43,6 +43,9 @@ fix_os_release() {
     cat /etc/issue > /usr/share/factory/etc/issue
 }
 
+fix_default_grub() {
+	echo 'GRUB_THEME="/usr/share/grub/themes/andromeda/theme.txt"' >> /etc/default/grub
+}
 main()
 {
     local hookname="$1"
@@ -51,9 +54,11 @@ main()
         os-release)  fix_os_release ;;
         lsb-release) fix_lsb_release ;;
 	repokey) fix_repo_key ;;
+	grub) fix_default_grub ;;
         "")          fix_os_release
                      fix_lsb_release
 		     fix_repo_key
+		     fix_default_grub
                      ;;
     esac
 }

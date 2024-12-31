@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = grub
+
+[Action]
+Description = Updating ExelentOS Grub Configurations...
+When = PostTransaction
+Exec = /usr/bin/exelent-hooks-runner grub
