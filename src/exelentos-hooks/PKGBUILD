@@ -15,9 +15,11 @@ source=(
   'exelent-dash-restore'
   'exelent.gpg'
   'calamares-remove-autostart.hook'
+  'exelent-default-grub.hook'
 )
 
 sha512sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -40,4 +42,5 @@ package() {
   install -Dm644 exelent-dash-restore       	 "$bin"/exelent-dash-restore
   install        exelent.gpg       		 "$pkgdir"/usr/share/exelent.gpg
   install -Dm644 calamares-remove-autostart.hook "$hooks"/calamares-remove-autostart.hook
+  install -Dm644 exelent-default-grub.hook       "$hooks"/exelent-default-grub.hook
  }

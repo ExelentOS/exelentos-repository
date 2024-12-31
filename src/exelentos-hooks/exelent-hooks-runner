@@ -44,7 +44,12 @@ fix_os_release() {
 }
 
 fix_default_grub() {
+   if [[ $(cat /etc/default/grub | grep andromeda) ]]
+   then
+	echo "already installed"
+   else
 	echo 'GRUB_THEME="/usr/share/grub/themes/andromeda/theme.txt"' >> /etc/default/grub
+   fi
 }
 main()
 {
