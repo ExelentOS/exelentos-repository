@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = calamares
+
+[Action]
+Description = Updating ExelentOS Calamares
+When = PostTransaction
+Exec = /usr/bin/exelent-hooks-runner calamares

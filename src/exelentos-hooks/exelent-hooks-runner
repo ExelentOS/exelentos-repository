@@ -51,6 +51,22 @@ fix_default_grub() {
 	echo 'GRUB_THEME="/usr/share/grub/themes/andromeda/theme.txt"' >> /etc/default/grub
    fi
 }
+
+fix_calamares() {
+   if [[ $(ls /usr/bin/calamares_polkit) ]] 
+   then
+	   echo already exists
+   else
+	   echo "#!/bin/bash" >> /usr/bin/calamares_polkit
+	   echo 'if [ $(which pkexec) ]; then' >> /usr/bin/calamares_polkit
+	   echo '	sudo "/usr/bin/calamares" "$@" "-d"' >> /usr/bin/calamares_polkit
+	   echo 'else' >> /usr/bin/calamares_polkit
+	   echo '	/usr/bin/calamares "$@" "-d"' >> /usr/bin/calamares_polkit
+	   echo 'fi' >> /usr/bin/calamares_polkit
+   fi
+}
+
+
 main()
 {
     local hookname="$1"
@@ -60,10 +76,12 @@ main()
         lsb-release) fix_lsb_release ;;
 	repokey) fix_repo_key ;;
 	grub) fix_default_grub ;;
+	calamares) fix_calamares ;;
         "")          fix_os_release
                      fix_lsb_release
 		     fix_repo_key
 		     fix_default_grub
+		     fix_calamares
                      ;;
     esac
 }

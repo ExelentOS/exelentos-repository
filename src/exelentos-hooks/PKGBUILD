@@ -16,9 +16,11 @@ source=(
   'exelent.gpg'
   'calamares-remove-autostart.hook'
   'exelent-default-grub.hook'
+  'exelent-calamares-polkit.hook'
 )
 
 sha512sums=(
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -43,4 +45,5 @@ package() {
   install        exelent.gpg       		 "$pkgdir"/usr/share/exelent.gpg
   install -Dm644 calamares-remove-autostart.hook "$hooks"/calamares-remove-autostart.hook
   install -Dm644 exelent-default-grub.hook       "$hooks"/exelent-default-grub.hook
+  install -Dm644 exelent-calamares-polkit.hook    "$hooks"/exelent-calamares-polkit.hook
  }
