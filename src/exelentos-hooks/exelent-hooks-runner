@@ -63,6 +63,7 @@ fix_calamares() {
 	   echo 'else' >> /usr/bin/calamares_polkit
 	   echo '	/usr/bin/calamares "$@" "-d"' >> /usr/bin/calamares_polkit
 	   echo 'fi' >> /usr/bin/calamares_polkit
+	   chmod +x /usr/bin/calamares_polkit
 	   sed -i 's|Exec=sh -c "pkexec calamares"|Exec=sh -c "calamares_polkit"|' /usr/share/applications/calamares.desktop
 
    fi
